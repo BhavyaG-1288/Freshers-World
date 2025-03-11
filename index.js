@@ -1,16 +1,19 @@
 const express =require("express");
 const connectToDb = require("./config");
-const UserRoute = require("./routes/user.route");
-require('dotenv').config();
+const UserRoute = require("./routes/user.routes");
+const JobRoute = require("./routes/job.routes");
+require('dotenv').config()
 const app =express();
-app.use(express.json())
-const PORT = process.env.PORT||8080
+const PORT = process.env.PORT||8080;
+
+app.use(express.json());
 
 app.get("/", (req, res)=>{
     res.send("This is a test route")
-})
+});
+app.use("/users",UserRoute);
+app.use("/job",JobRoute);
 
-app.use("/users", UserRoute);
 app.listen(PORT,()=>{
     connectToDb();
     console.log("Server started");
