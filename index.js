@@ -2,6 +2,7 @@ const express =require("express");
 const connectToDb = require("./config");
 const UserRoute = require("./routes/user.routes");
 const JobRoute = require("./routes/job.routes");
+const ApplicationRoute = require("./routes/application.routes");
 require('dotenv').config()
 const app =express();
 const PORT = process.env.PORT||8080;
@@ -13,6 +14,7 @@ app.get("/", (req, res)=>{
 });
 app.use("/users",UserRoute);
 app.use("/job",JobRoute);
+app.use("/applications", ApplicationRoute);
 
 app.listen(PORT,()=>{
     connectToDb();
