@@ -1,3 +1,4 @@
+//Schema for Users
 const mongoose =require("mongoose");
 
 const UserSchema = new mongoose.Schema({
